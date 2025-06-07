@@ -3,11 +3,11 @@ import { Navigate } from 'react-router-dom'
 import Main from '../components/SignIn/Main';
 import DataContext from '../context/DataContext'
 export default function AuthRouter({children}) {
-    const ctx =useContext(DataContext);
+    const ctx = useContext(DataContext);
   return (
     <>
     {
-       ctx.isloggedin ? children :<Main/>
+      ctx.manage?.isLoggedIn ? children : <Main />
     }
     </>
   )

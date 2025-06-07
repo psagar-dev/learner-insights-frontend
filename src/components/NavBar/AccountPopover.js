@@ -41,9 +41,13 @@ export default function AccountPopover() {
   const handleClick = () => {
     ctx.setManage((prev) => ({
       ...prev,
-      isLoggedIn:false
-  }))
-  navigate("/")
+      isLoggedIn: false,
+      authToken: '',
+      usertype: '',
+      userdetails: ''
+    }));
+    localStorage.removeItem('manage');
+    navigate("/");
   }
 
   return (

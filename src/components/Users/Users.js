@@ -93,7 +93,8 @@ const Users = (props) => {
       ctx.setListOfUsers(res.data);
     }
     fetchUsers()
-  }, [ctx]);
+  // run once on mount to avoid refetching when context updates
+  }, []);
   return (
     <Box sx={{ padding: "10px" }}>
       <Box

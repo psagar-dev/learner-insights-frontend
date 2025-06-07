@@ -1,7 +1,7 @@
 import "./App.css";
 import AdminDashboard from "./components/AdminDashboard/adminDashboard";
 import Users from "./components/Users/Users";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar/navBar";
 import FacultyNavbar from "./components/NavBar/FacultyNavbar";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -55,6 +55,8 @@ function App() {
           {manage.isLoggedIn && <Route path='/career' element={<Career authToken={manage.authToken} />} />}
           {manage.isLoggedIn && <Route path='/registerUser' element={<UserRegistration />} />}
          {manage.isLoggedIn && <Route path='/questionUpload' element={<QuestionUpload/>} />}
+          {/* Redirect any unknown routes to login */}
+          <Route path="*" element={<Navigate to="/" replace />} />
       
           
        
