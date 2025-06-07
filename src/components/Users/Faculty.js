@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from "react";
-// import { getUsers } from "../../api/queries";
+import { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import Avatar from "@mui/material/Avatar";
-import SearchIcon from "@mui/icons-material/Search";
 import { Box } from "@mui/system";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import { Button, Typography } from "@mui/material";
-import { faker } from "@faker-js/faker";
 import axios from "axios";
 import { GridToolbar } from '@mui/x-data-grid';
 
@@ -92,7 +86,6 @@ const columns = [
 ];
 
 const Faculty = (props) => {
-  let id = faker.datatype.uuid()
   const [listOfUsers, setListOfUsers] = useState([]);
 
   useEffect(() => {
@@ -103,7 +96,6 @@ const Faculty = (props) => {
     }
     fetchUsers()
   }, []);
-  console.log(listOfUsers);
 
   return (
     <Box sx={{ padding: "10px" }}>

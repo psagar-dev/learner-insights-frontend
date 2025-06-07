@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import DataContext from './DataContext'
 
 export default function ContextProvider({ children }) {

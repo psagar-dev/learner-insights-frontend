@@ -1,17 +1,10 @@
-import React, { useEffect, useState,useContext } from "react";
-// import { getUsers } from "../../api/queries";
+import { useEffect, useContext } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import Avatar from "@mui/material/Avatar";
-import SearchIcon from "@mui/icons-material/Search";
 import { Box } from "@mui/system";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import { Button, Typography } from "@mui/material";
-import { faker } from "@faker-js/faker";
 import axios from "axios";
 import DataContext from "../../context/DataContext";
 import { GridToolbar } from '@mui/x-data-grid';
-// import { useDemoData } from '@mui/x-data-grid-generator';
+
 const columns = [
   {
     field: "username",
@@ -94,24 +87,13 @@ const columns = [
 
 const Users = (props) => {
   const ctx = useContext(DataContext);
- 
   useEffect(() => {
-  
     async function fetchUsers() {
       let res = await axios.get("http://localhost:3000/student/getstudent")
-      console.log(res.data);
       ctx.setListOfUsers(res.data);
     }
     fetchUsers()
-   
-
-  }, []);
-  
-
-
-
-  
-  
+  }, [ctx]);
   return (
     <Box sx={{ padding: "10px" }}>
       <Box
@@ -122,10 +104,7 @@ const Users = (props) => {
           justifyContent: "space-between",
         }}
       >
-       
-    
       </Box>
-
       <Box
         sx={{
           height: 450,
@@ -143,30 +122,14 @@ const Users = (props) => {
             borderRadius: "5px",
           }}
         >
-         
         </Box>
-
          <DataGrid
-      
           columns={columns}
           rows={ctx.listOfUsers}
-         
           getRowId={(row)=>row._id}
-        components={{
-          Toolbar: GridToolbar,
+          components={{
+            Toolbar: GridToolbar,
           }}
-    
-        // filterModel={{
-        //   items: [
-        //     {
-        //       columnField: {
-        //         onChange: (event) => setinput(event.target.value)
-        //       },
-            
-        //     },
-           
-        //   ],
-        // }}
       />
       </Box>
     </Box>

@@ -1,25 +1,20 @@
-import { Card, CardContent, Typography, Container, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getStudentDashboardData } from "../../api/queries";
-
-import ConversionRate from "./conversionRate";
 import StudentCard from "./StudentCard";
-
 import StudentAttendance from "./StudentAttendance";
 import SkillTagChart from "./SkillTagChart";
 
 const StudentDashboard = () => {
-  const [dashBoardData, setDashboardData] = useState([]);
+  const [, setDashboardData] = useState([]);
 
   useEffect(() => {
     getStudentDashboardData().then((data) => {
       setDashboardData(data);
     });
   }, []);
-
-
-
+  
   return (
     <Box>
 

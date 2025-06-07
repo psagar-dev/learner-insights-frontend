@@ -33,10 +33,8 @@ const Level = [
 
 export default function QuestionUpload() {
     const [value, setValue] = React.useState({});
-    const [level, setLevel] = React.useState("")
     const [msg, setMsg] = React.useState("")
     const handleChange = (event) => {
-        console.log(event.target.name, " ", event.target.value);
         setValue((prev) => ({
             ...prev,
             [event.target.name]: event.target.value
@@ -45,7 +43,6 @@ export default function QuestionUpload() {
     };
 
     const handleClick = async () => {
-        console.log(value);
         if (!value.question_title || !value.question || !value.tag_level || !value.skill_tag || !value.sub_tag) {
             alert("Please enter  * fields ")
             return;
@@ -60,7 +57,6 @@ export default function QuestionUpload() {
             solution: value.solution,
             total_marks: total_marks
         })
-        console.log(res.data);
         setMsg(res.data.message)
     }
 

@@ -1,39 +1,35 @@
 import "./App.css";
 import AdminDashboard from "./components/AdminDashboard/adminDashboard";
 import Users from "./components/Users/Users";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/navBar";
 import FacultyNavbar from "./components/NavBar/FacultyNavbar";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import theme from './theme';
 
 import Faculty from "./components/Users/Faculty";
 import Career from "./components/Users/Career";
 import UserRegistration from "./components/code/UserRegistrationUI";
 import Login from "./components/Login/Login";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import QuestionUpload from "./components/FacultyDashboard.js/QuestionUploadForm/QuestionUpload";
 import DataContext from "./context/DataContext";
-import axios from 'axios';
 import FacultyDashboard from "./components/FacultyDashboard.js/adminDashboard";
 import StudentDashboard from "./components/StudentDashboard/StudentDashboard";
 import StudentNav from "./components/NavBar/StudentNav";
 function App() {
   const ctx = useContext(DataContext);
   const manage = ctx.manage;
-
-
-
-
-
-
+  
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "100%",
-        backgroundColor: "rgb(249, 250, 251)",
-      }}
-    >
+    <ThemeProvider theme={theme}>
+      <div
+        style={{
+          display: "flex",
+          height: "100%",
+          backgroundColor: "rgb(249, 250, 251)",
+        }}
+      >
       <CssBaseline />
       {manage.usertype ==="admin" && manage.isLoggedIn && <NavBar />}
       {manage.usertype ==="faculty" && manage.isLoggedIn && <FacultyNavbar />}
@@ -67,18 +63,8 @@ function App() {
         </Routes>
       </main>
     </div>
+    </ThemeProvider>
   );
 }
 
 export default App;
-
-// "repository": {
-//   "type": "git",
-//   "url": "git+https://github.com/UnpredictablePrashant/learnerReportCS_frontend.git"
-// },
-// "author": "",
-// "license": "ISC",
-// "bugs": {
-//   "url": "https://github.com/UnpredictablePrashant/learnerReportCS_frontend/issues"
-// },
-// "homepage": "https://github.com/UnpredictablePrashant/learnerReportCS_frontend#readme"

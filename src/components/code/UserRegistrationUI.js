@@ -26,7 +26,6 @@ export default function UserRegistration() {
     setIsError(false)
     setIsSuccess(false)
     event.preventDefault();
-    console.log("inside register")
     let data = {
       fullname: fullname,
       phone: phone,
@@ -40,10 +39,8 @@ export default function UserRegistration() {
       await axios
         .post(url, data)
         .then((res) => {
-          console.log(res);
           setMsg(res.data.message)
           setIsSuccess(true);
-          console.log("resetdata")
           document.getElementById("create-course-form").reset();        
           setusername("");
           setpassword("")

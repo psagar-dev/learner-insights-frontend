@@ -29,7 +29,6 @@ export default function AccountPopover() {
     const navigate = useNavigate();
     const ctx = useContext(DataContext);
   const [open, setOpen] = useState(null);
-  console.log(ctx.manage.userdetails);
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
   };

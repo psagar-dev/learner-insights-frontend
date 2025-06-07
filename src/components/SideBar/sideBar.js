@@ -7,19 +7,17 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Button,
-  IconButton,
   Avatar,
+  IconButton,
+  styled,
+  alpha,
 } from "@mui/material";
-import {Navigate ,Link } from "react-router-dom";
-
+import { Link, useLocation } from "react-router-dom";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import profileImage from "../../images/avatar_default.png";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LogoDevIcon from "@mui/icons-material/LogoDev";
 import DataContext from "../../context/DataContext";
-
-
 
 const menuItems = [
   {
@@ -43,75 +41,105 @@ const menuItems = [
     path: "/career",
   },
   {
-   
     name: "UserRegister",
     icon: <AccountBoxIcon />,
     path: "/registerUser",
   },
 ];
+
+const StyledListItemButton = styled(ListItemButton)(({ theme, active }) => ({
+  margin: "4px 8px",
+  borderRadius: "12px",
+  backgroundColor:
+    active === 1
+      ? alpha(theme.palette.primary.main, 0.08)
+      : "transparent",
+  color: active === 1 ? theme.palette.primary.main : theme.palette.text.primary,
+  "&:hover": {
+    backgroundColor:
+      active === 1
+        ? alpha(theme.palette.primary.main, 0.12)
+        : alpha(theme.palette.primary.main, 0.04),
+  },
+  "& .MuiListItemIcon-root": {
+    color: active === 1 ? theme.palette.primary.main : theme.palette.text.secondary,
+  },
+}));
+
+const StyledLogo = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(3, 2.5),
+  display: "flex",
+  alignItems: "center",
+  gap: theme.spacing(1),
+  "& .MuiIconButton-root": {
+    color: theme.palette.primary.main,
+  },
+}));
+
+const UserBox = styled(Box)(({ theme }) => ({
+  margin: theme.spacing(0, 2, 4),
+  padding: theme.spacing(2),
+  borderRadius: "16px",
+  backgroundColor: alpha(theme.palette.primary.main, 0.04),
+  display: "flex",
+  alignItems: "center",
+  gap: theme.spacing(2),
+}));
+
 const SideBar = () => {
   const ctx = useContext(DataContext);
+  const location = useLocation();
+
   return (
-    <Box>
-      {/* Logo */}
-      <Box sx={{ padding: "24px 20px" }}>
-        <IconButton>
-          <LogoDevIcon />
+    <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+      <StyledLogo>
+        <IconButton size='large'>
+          <LogoDevIcon sx={{ fontSize: 32 }} />
         </IconButton>
-      </Box>
-      {/* Name and profile avatar */}
-      <Box
-        sx={{
-          mb: "40px",
-          ml: "20px",
-          mr: "20px",
-          display: "flex",
-          alignItems: "center",
-          padding: "16px 20px",
-          borderRadius: "10px",
-          backgroundColor: "rgba(145, 158, 171, 0.25)",
-          width: "80%",
-        }}
-      >
-        <Avatar
-          alt='User'
-          src={profileImage}
-          sx={{ width: "40px", height: "40px" }}
-        />
-        <Typography
-          variant='h6'
-          sx={{ ml: "16px", fontSize: "0.875rem", fontWeight: "600" }}
-        >
-     {ctx.manage.userdetails.username}
+        <Typography variant='h6' color='primary.main' fontWeight={700}>
+          HeroVired
         </Typography>
-      </Box>
+      </StyledLogo>
 
-      {/* Navigation items */}
-      <List>
-        {menuItems.map((item) => {
-          return (
-            <ListItem key={item.name} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <Link to={item.path} style={{ textDecoration: "none" }}>
-                  <ListItemText primary={item.name} />
-                </Link>
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
+      <UserBox>
+        <Avatar
+          src={profileImage}
+          sx={{
+            width: 40,
+            height: 40,
+            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+          }}
+        />
+        <Box>
+          <Typography variant='subtitle1' fontWeight={600} noWrap>
+            {ctx.manage.userdetails.username}
+          </Typography>
+          <Typography variant='caption' color='text.secondary' noWrap>
+            Administrator
+          </Typography>
+        </Box>
+      </UserBox>
+
+      <List sx={{ px: 2, flexGrow: 1 }}>
+        {menuItems.map((item) => (
+          <ListItem key={item.name} disablePadding sx={{ mb: 1 }}>
+            <StyledListItemButton
+              active={location.pathname === item.path ? 1 : 0}
+              component={Link}
+              to={item.path}
+            >
+              <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>
+              <ListItemText
+                primary={item.name}
+                primaryTypographyProps={{
+                  fontSize: "0.875rem",
+                  fontWeight: location.pathname === item.path ? 600 : 400,
+                }}
+              />
+            </StyledListItemButton>
+          </ListItem>
+        ))}
       </List>
-
-      {/* Upgrade */}
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-   
-      </Box>
     </Box>
   );
 };

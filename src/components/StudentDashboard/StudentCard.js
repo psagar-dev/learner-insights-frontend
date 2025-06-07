@@ -1,19 +1,10 @@
-import React,{useEffect,useState,useContext} from 'react'
+import {useContext} from 'react'
 import Avatar from '@mui/material/Avatar';
 import { Card, CardContent, Typography, Container, Grid } from "@mui/material";
-import { Box } from "@mui/system";
 import DataContext from '../../context/DataContext';
-import { getStudentDashboardData } from "../../api/queries";
 export default function StudentCard() {
-    // const [dashBoardData, setDashboardData] = useState([]);
     const ctx = useContext(DataContext)
     const d = ctx.manage.userdetails;
-    console.log(d);
-    // useEffect(() => {
-    //   getStudentDashboardData().then((data) => {
-    //     setDashboardData(data);
-    //   });
-    // }, []);
     return (
         <>
             <Container
@@ -24,10 +15,7 @@ export default function StudentCard() {
                     Hi Student ,Track your progress:
                 </Typography>
             </Container>
-
             <Grid container sx={{ marginBottom: "20px" }}>
-                
-                    
                         <Grid key={d._id}>
                             <Card
                                 sx={{
