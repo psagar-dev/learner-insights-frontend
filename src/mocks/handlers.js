@@ -1,7 +1,4 @@
 import { http, HttpResponse } from 'msw';
-import { faker } from "@faker-js/faker";
-
-
 const dashBoardInfo = [
   {
     name: "Batches",
@@ -57,10 +54,10 @@ const StudentBoardInfo = [
 
 
 export const handlers = [
-  http.get("/api/dashboard", () => {
+  http.get("http://localhost:3000/api/dashboard", () => {
     return HttpResponse.json(dashBoardInfo, { status: 200 });
   }),
-  http.get("/api/studentinfo", () => {
+  http.get("http://localhost:3000/api/studentinfo", () => {
     return HttpResponse.json(StudentBoardInfo, { status: 200 });
   }),
 ];
