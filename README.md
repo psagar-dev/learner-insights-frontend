@@ -23,6 +23,17 @@ docker run -it -p 80:3000 frontend-lrccapstone
 
 View the project at http://127.0.0.1
 
+# Testing
+
+All unit and component tests use **Jest** together with **React Testing Library**.
+Run the suite in non-interactive mode with:
+
+```bash
+CI=true npm test -- --watchAll=false
+```
+
+Axios is mocked via `__mocks__/axios.js` so tests don't load the real ESM package.
+
 # Reference
 
 https://github.com/minimal-ui-kit/material-kit-react
