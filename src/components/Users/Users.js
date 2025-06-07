@@ -89,11 +89,11 @@ const Users = (props) => {
   const ctx = useContext(DataContext);
   useEffect(() => {
     async function fetchUsers() {
-      let res = await axios.get("http://localhost:3000/student/getstudent")
+      let res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/student/getstudent`)
       ctx.setListOfUsers(res.data);
     }
     fetchUsers()
-  }, [ctx]);
+  }, []);
   return (
     <Box sx={{ padding: "10px" }}>
       <Box

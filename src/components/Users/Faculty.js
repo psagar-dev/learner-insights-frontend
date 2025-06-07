@@ -91,7 +91,7 @@ const Faculty = (props) => {
   useEffect(() => {
 
     async function fetchUsers() {
-      let res = await axios.get("http://localhost:3000/faculty/getfaculty")
+      let res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/faculty/getfaculty`)
       setListOfUsers(res.data.result);
     }
     fetchUsers()
