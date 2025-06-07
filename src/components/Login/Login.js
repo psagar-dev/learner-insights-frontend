@@ -233,8 +233,10 @@ const Login = () => {
               />
 
               <FormControl fullWidth variant="outlined">
-                <InputLabel>User Type</InputLabel>
+                <InputLabel id="user-type-label">User Type</InputLabel>
                 <Select
+                  labelId="user-type-label"
+                  id="user-type"
                   value={manageLogin.type}
                   label="User Type"
                   onChange={handleChange}
