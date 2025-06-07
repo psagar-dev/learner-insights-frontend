@@ -93,7 +93,7 @@ const Users = (props) => {
       ctx.setListOfUsers(res.data);
     }
     fetchUsers()
-  }, []);
+  }, [ctx]);
   return (
     <Box sx={{ padding: "10px" }}>
       <Box
