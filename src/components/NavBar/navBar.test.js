@@ -12,7 +12,7 @@ function renderWithProviders(ui, { providerProps, route = '/' } = {}) {
 }
 
 describe('NavBar component', () => {
-  test('renders search input and HeroVired text', () => {
+  test('renders search input and SecureLooper text', () => {
     const providerProps = {
       value: { manage: { userdetails: { username: 'John Doe' } } },
     };
@@ -20,6 +20,6 @@ describe('NavBar component', () => {
     renderWithProviders(<NavBar />, { providerProps });
 
     expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument();
-    expect(screen.getByText('HeroVired')).toBeInTheDocument();
+    expect(screen.getByText('SecureLooper')).toBeInTheDocument();
   });
 });

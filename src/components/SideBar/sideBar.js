@@ -97,7 +97,7 @@ const SideBar = () => {
           <LogoDevIcon sx={{ fontSize: 32 }} />
         </IconButton>
         <Typography variant='h6' color='primary.main' fontWeight={700}>
-          HeroVired
+          SecureLooper
         </Typography>
       </StyledLogo>
 
