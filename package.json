@@ -11,8 +11,8 @@
     "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.15",
     "@mui/x-data-grid": "^6.18.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^14.3.1",
     "@testing-library/user-event": "^13.5.0",
     "apexcharts": "^4.7.0",
     "axios": "^1.9.0",
@@ -53,15 +53,15 @@
   "devDependencies": {
     "msw": "^2.10.0"
   },
-    "msw": {
-      "workerDirectory": "public"
-    },
+  "msw": {
+    "workerDirectory": "public"
+  },
   "jest": {
     "moduleNameMapper": {
       "^axios$": "<rootDir>/__mocks__/axios.js"
     }
   },
-    "description": "Building the docker image. React application is running at port 3000 inside the container and is exposed at port 80 in host machine.",
+  "description": "Building the docker image. React application is running at port 3000 inside the container and is exposed at port 80 in host machine.",
   "main": "index.js",
   "author": "",
   "license": "ISC"

@@ -6,7 +6,8 @@ import Login from './Login';
 
 function renderWithProviders(ui, { providerProps } = {}) {
   return render(
-    <MemoryRouter>
+    <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+>
       <DataContext.Provider {...providerProps}>{ui}</DataContext.Provider>
     </MemoryRouter>
   );

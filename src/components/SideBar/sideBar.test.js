@@ -5,7 +5,10 @@ import { MemoryRouter } from 'react-router-dom';
 
 function renderWithProviders(ui, { providerProps, ...renderOptions } = {}) {
   return render(
-    <MemoryRouter>
+    <MemoryRouter future={{ 
+      v7_startTransition: true, 
+      v7_relativeSplatPath: true 
+      }} >
       <DataContext.Provider {...providerProps}>{ui}</DataContext.Provider>
     </MemoryRouter>,
     renderOptions
