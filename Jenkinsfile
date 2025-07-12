@@ -29,7 +29,10 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("${config.DOCKER_IMAGE}", "--build-arg REACT_APP_API_BASE_URL=${env.REACT_APP_API_BASE_URL}")
+                    docker.build(
+                        "${config.DOCKER_IMAGE}",
+                        "--build-arg REACT_APP_API_BASE_URL=${env.REACT_APP_API_BASE_URL} ."
+                    )
                 }
             }
         }
